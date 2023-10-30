@@ -4,10 +4,12 @@ import networkx as nx
 
 from grave import plot_network
 import matplotlib as mpl
-mpl.use('PS')
+
+mpl.use("PS")
 
 import matplotlib.pyplot as plt
-plt.rcParams['text.usetex'] = False
+
+plt.rcParams["text.usetex"] = False
 
 
 def test_smoke_graph():

@@ -8,7 +8,7 @@ KNOWN_LAYOUTS = {
     "kamada_kawai": nx.kamada_kawai_layout,
     "shell": nx.shell_layout,
     "spectral": nx.spectral_layout,
-    }
+}
 
 
 def _apply_layout(layout, graph):

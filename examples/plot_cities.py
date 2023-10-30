@@ -31,12 +31,13 @@ import grave
 
 
 def miles_graph():
-    """ Return the cites example graph in miles_dat.txt
-        from the Stanford GraphBase.
+    """Return the cites example graph in miles_dat.txt
+    from the Stanford GraphBase.
     """
     # open file miles_dat.txt.gz (or miles_dat.txt)
     import gzip
-    fh = gzip.open('knuth_miles.txt.gz', 'r')
+
+    fh = gzip.open("knuth_miles.txt.gz", "r")
 
     G = nx.Graph()
     G.position = {}
@@ -69,19 +70,22 @@ def miles_graph():
     return G
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     G = miles_graph()
 
     print("Loaded miles_dat.txt containing 128 cities.")
-    print("digraph has %d nodes with %d edges"
-          % (nx.number_of_nodes(G), nx.number_of_edges(G)))
-    cities = ['San Diego, CA',
-              'San Francisco, CA',
-              'Saint Augustine, FL',
-              'Spokane, WA',
-              'Worcester, MA',
-              'Tucson, AZ']
+    print(
+        "digraph has %d nodes with %d edges"
+        % (nx.number_of_nodes(G), nx.number_of_edges(G))
+    )
+    cities = [
+        "San Diego, CA",
+        "San Francisco, CA",
+        "Saint Augustine, FL",
+        "Spokane, WA",
+        "Worcester, MA",
+        "Tucson, AZ",
+    ]
 
     # make subgraph of cities
     H = G.subgraph(cities)
@@ -91,29 +95,30 @@ if __name__ == '__main__':
     # draw with grave
     plt.figure(figsize=(8, 8))
     # create attribute for label
-    nx.set_edge_attributes(H,
-                           {e: G.edges[e]['weight'] for e in H.edges},
-                           'label')
+    nx.set_edge_attributes(H, {e: G.edges[e]["weight"] for e in H.edges}, "label")
 
     # create stylers
     def transfer_G_layout(network):
         return {n: G.position[n] for n in network}
 
     def elabel_base_style(attr):
-        return {'font_size': 4,
-                'font_weight': 'bold',
-                'font_family': 'sans-serif',
-                'font_color': 'b',
-                'rotate': True,  # TODO: make rotation less granular
-                }
+        return {
+            "font_size": 4,
+            "font_weight": "bold",
+            "font_family": "sans-serif",
+            "font_color": "b",
+            "rotate": True,  # TODO: make rotation less granular
+        }
 
-    elabel_style = grave.style_merger(grave.use_attributes('label'),
-                                      elabel_base_style)
+    elabel_style = grave.style_merger(grave.use_attributes("label"), elabel_base_style)
 
-    grave.plot_network(H, transfer_G_layout,
-                       node_style=dict(node_size=20),
-                       edge_label_style=elabel_style,
-                       node_label_style={'font_weight': 'bold'})
+    grave.plot_network(
+        H,
+        transfer_G_layout,
+        node_style=dict(node_size=20),
+        edge_label_style=elabel_style,
+        node_label_style={"font_weight": "bold"},
+    )
 
     # scale the axes equally
     plt.xlim(-5000, 500)

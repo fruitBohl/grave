@@ -11,7 +11,7 @@ from grave import grave
 
 
 graph = nx.barbell_graph(10, 14)
-nx.set_node_attributes(graph, dict(graph.degree()), 'degree')
+nx.set_node_attributes(graph, dict(graph.degree()), "degree")
 
 fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(4, 6))
 

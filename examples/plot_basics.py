@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from grave import plot_network
 
 # Generate a networkx graph
-graph = nx.powerlaw_cluster_graph(50, 1, .2)
+graph = nx.powerlaw_cluster_graph(50, 1, 0.2)
 
 # Plot it
 plot_network(graph)
